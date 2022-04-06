@@ -2,8 +2,15 @@ import matplotlib.pyplot as plt
 import cv2
 import os
 # 遍历 font 文件夹的文件
-root = 'fontInput'
-outroot = 'fontInput'
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--raw', '-r', type=str, default='./fontRaw')
+parser.add_argument('--outdir', '-o', type=str, default='./fontBinarized')
+args = parser.parse_args()
+
+root = args.raw
+outroot = args.outdir
 files = os.listdir(root)
 # 除去文件夹
 files = [file for file in files if not os.path.isdir(os.path.join(root, file))]
